@@ -42,13 +42,13 @@ public class WebUsers {
             nullable = false
     )
     private String webUserRole;
-//    @OneToMany(
-//            mappedBy = "webUserID",
-//            fetch = FetchType.LAZY,
-//            cascade = {CascadeType.ALL},
-//            orphanRemoval = true
-//    )
-//    private List<Abonents> owners = new ArrayList();
+    @OneToMany(
+            mappedBy = "webUserID",
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.ALL},
+            orphanRemoval = true
+    )
+    private List<Abonents> owners = new ArrayList();
 
     public WebUsers() {
     }
@@ -64,9 +64,9 @@ public class WebUsers {
         return this.userID;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
+//    public void setUserID(int userID) {
+//        this.userID = userID;
+//    }
 
     public String getLogin() {
         return this.login;
@@ -92,14 +92,21 @@ public class WebUsers {
         this.webUserRole = userRole;
     }
 
-//    public List<Abonents> getOwners() {
-//        return this.owners;
-//    }
+    public List<Abonents> getOwners() {
+        return this.owners;
+    }
 
-//    public void setOwners(List<Abonents> owners) {
-//        this.owners = owners;
-//    }
+    public void setOwners(List<Abonents> owners) {
+        this.owners = owners;
+    }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @Override
     public String toString() {
