@@ -9,7 +9,12 @@ public interface WebUsersRepository extends CrudRepository<WebUsers, Long>{
 
     WebUsers findByLogin(String login);
 
+    WebUsers findByPassword(String password);
+
+
     WebUsers deleteByLogin(String login);
+
+
 
 
 }

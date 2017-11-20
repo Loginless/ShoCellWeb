@@ -11,13 +11,16 @@ public class WebUsersService {
     @Autowired
     private WebUsersRepository webUsersRepository;
 
-
     public void saveUser(WebUsers webUsers) {
         webUsersRepository.save(webUsers);
     }
 
-    public WebUsers findByLogin(String Login) {
-        return webUsersRepository.findByLogin(Login);
+    public WebUsers findByLogin(String webUserLogin) {
+        return webUsersRepository.findByLogin(webUserLogin);
+    }
+
+    public WebUsers findByPassword(String webUserPassword) {
+        return webUsersRepository.findByPassword(webUserPassword);
     }
 
 }
