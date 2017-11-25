@@ -10,51 +10,20 @@
 </head>
 <body>
 
-<form:form id="regForm" modelAttribute="registerForm" action="registerProcess" method="post">
+<form id="registerForm" commandName="registerForm" method="post" action="${pageContext.request.contextPath}/registerProcess">
+    <label><b>Login</b></label>
+    <input type="text" placeholder="Enter new Login" name="login" required>
+    <br>
 
-    <table align="center">
-        <tr>
-            <td>
-                <form:label path="login">Login</form:label>
-            </td>
-            <td>
-                <form:input path="login" name="login" />
-                <%--<form:errors path="login" cssClass="error" />--%>
+    <label><b>Password</b></label>
+    <input type="text" placeholder="Enter Password" name="password" required>
+    <br>
 
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="password">Password</form:label>
-            </td>
-            <td>
-                <form:password path="password" name="password" />
-                <%--<form:errors path="password" cssClass="error" />--%>
+    <label><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" required>
+    <br>
 
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="email">Email</form:label>
-            </td>
-            <td>
-                <form:input path="email" name="email" />
-            </td>
+    <input type="submit" value="Register new user" name="Register">
 
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <form:button id="register" name="register">Register</form:button>
-            </td>
-        </tr>
-        <tr></tr>
-        <tr>
-            <td></td>
-            <td><a href="index.jsp">Home</a>
-            </td>
-        </tr>
-    </table>
-</form:form>
 </body>
 </html>

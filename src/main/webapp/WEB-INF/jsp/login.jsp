@@ -9,19 +9,22 @@
     <title>Login page</title>
 </head>
 <body>
+<h1>Log-in</h1><br>
 
-<form:form id="loginForm" commandName="loginForm" action="loginProcess" method="post" class="box login">
-    <fieldset class="boxBody">
-        <form:label path="login">Login:</form:label>
-        <form:input path="login" />
+<form id="loginForm" commandName="loginForm" method="post" action="${pageContext.request.contextPath}/loginProcess">
+    <label><b>Login</b></label>
+    <input type="text" placeholder="Enter Login" name="login" required>
+    <br>
 
-        <form:label path="password">Password:</form:label>
-        <form:input path="password" />
+    <label><b>Password</b></label>
+    <input type="text" placeholder="Enter Password" name="password" required>
+    <br>
 
-    </fieldset>
-    <footer> <label><input type="checkbox" tabindex="3">Keep me logged in</label>
-        <input type="submit" class="btnLogin" value="Login" tabindex="4">
-    </footer>
-</form:form>
+    <input type="submit" value="Log-in" name="Login">
+
+    <br><br>
+    <label><b>Doesn't have account? Register new user.</b></label>
+    <td><a href="registration">Register</a>
+
 </body>
 </html>

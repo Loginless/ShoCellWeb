@@ -18,7 +18,7 @@ public class UserLoginController {
     WebUsersService webUsersService;
 
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView getLoginForm() {
         ModelAndView modelAndView = new ModelAndView("login", "loginForm", new WebUsers());
         return modelAndView;
