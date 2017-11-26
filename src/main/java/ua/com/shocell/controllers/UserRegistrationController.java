@@ -8,47 +8,45 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import ua.com.shocell.Validator.WebUserLoginValidator;
 import ua.com.shocell.Validator.WebUserRegValidator;
 import ua.com.shocell.models.WebUsers;
-import ua.com.shocell.service.WebUsersService;
+import ua.com.shocell.service.WebUserServiceImpl;
 
 @Controller
 public class UserRegistrationController {
 
     @Autowired
-    WebUsersService webUsersService;
+    WebUserServiceImpl webUserServiceImpl;
 
     @Autowired
     WebUserRegValidator webUserRegValidator;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String getRegistrationForm(Model model) {
+    public String getRegistrationForm() {
+        ModelAndView modelAndView = new ModelAndView();
         WebUsers user = new WebUsers();
-        model.addAttribute("registerForm", user);
+        modelAndView.addObject(user);
+        modelAndView.setViewName("registerForm");
         return "registration";
     }
 
     @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
-    public ModelAndView doRegistration(@ModelAttribute("registerForm") WebUsers registerForm,
-                                       BindingResult bindingResult) {
+    public ModelAndView doRegistration(@ModelAttribute("registerForm") WebUsers registerForm) {
 
         ModelAndView modelAndView = new ModelAndView();
-
-        webUserRegValidator.validate(registerForm, bindingResult);
-        if (bindingResult.hasErrors()) {
+        WebUsers userExists = webUserServiceImpl.findWebUserByLogin(registerForm.getLogin());
+        if (userExists != null) {
             modelAndView.setViewName("registration");
             return modelAndView;
         }
         modelAndView.addObject(registerForm);
-        webUsersService.saveUser(registerForm);
+        webUserServiceImpl.saveUser(registerForm);
         modelAndView.setViewName("regConfirmation");
         return modelAndView;
     }
 
     @RequestMapping(value = "/regConfirmation", method = RequestMethod.POST)
     public String getConfirmation(@ModelAttribute("registerForm") WebUsers registerForm) {
-        // we have to clear data after registrations and provide new one to login
-        return "index";
+        return "login";
     }
 }

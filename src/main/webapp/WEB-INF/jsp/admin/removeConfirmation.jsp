@@ -11,16 +11,16 @@
 <body>
 <form:form action="/login" method="get">
 
-login:${registerForm.login}
-<br>
-password:${registerForm.password}
-<br>
-email:${registerForm.email}
-<br>
-<hr>
-<footer>
-    <input type="submit" class="btnLogin" value="Confirm" tabindex="4">
-</footer>
+    login:${deleteUserForm.login}
+    <br>
+    password:${deleteUserForm.password}
+    <br>
+    email:${deleteUserForm.email}
+    <br>
+    <hr>
+    <footer>
+        <input type="submit" class="btnLogin" value="Confirm" tabindex="4">
+    </footer>
 </form:form>
 
 </body>

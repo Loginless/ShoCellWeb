@@ -6,13 +6,13 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import ua.com.shocell.models.WebUsers;
-import ua.com.shocell.service.WebUsersService;
+import ua.com.shocell.service.WebUserServiceImpl;
 
 @Component
 public class WebUserLoginValidator implements Validator{
 
     @Autowired
-    WebUsersService webUsersService;
+    WebUserServiceImpl webUserServiceImpl;
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -24,13 +24,13 @@ public class WebUserLoginValidator implements Validator{
         WebUsers webUsers = (WebUsers) o;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "NotEmpty");
-        if (!webUsersService.findByLogin(webUsers.getLogin()).getLogin().equals(webUsers.getLogin())) {
-            errors.rejectValue("login", "Wrong.loginForm.login");
-        }
+//        if (!webUsersService.findByLogin(webUsers.getLogin()).getLogin().equals(webUsers.getLogin())) {
+//            errors.rejectValue("login", "Wrong.loginForm.login");
+//        }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (!webUsersService.findByPassword(webUsers.getPassword()).getPassword().equals(webUsers.getPassword())) {
-            errors.rejectValue("login", "Wrong.loginForm.password");
-        }
+//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+//        if (!webUserServiceImpl.findByPassword(webUsers.getPassword()).getPassword().equals(webUsers.getPassword())) {
+//            errors.rejectValue("login", "Wrong.loginForm.password");
+//        }
     }
 }

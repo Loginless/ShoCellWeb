@@ -69,11 +69,11 @@
 </style>
 
 
-<h1>Wellcome to ShoCell webportal!</h1><br>
+<h1>Divide et impera, ADMIN!</h1><br>
 <body>
 
-<form id="loginForm" commandName="loginForm" method="post" action="${pageContext.request.contextPath}/loginProcess">
-    <h2>Please, log in to proceed.</h2><br>
+<form id="deleteUserForm" commandName="deleteUserForm" method="post" action="${pageContext.request.contextPath}/deleteUserProcess">
+    <h2>Please, enter User login to proceed.</h2><br>
 
     <div class="container">
 
@@ -81,21 +81,10 @@
         <input type="text" placeholder="Enter Login" name="login" required>
         <br>
 
-        <label><b>Password</b></label>
-        <input type="text" placeholder="Enter Password" name="password" required>
-        <br>
-
-        <input type="submit" value="Log-in" name="Login">
+        <input type="submit" value="Finish him!" name="Fatality">
     </div>
 
-    <br><br>
-    <div class="container" style="background-color:#f1f1f1">
-
-        <label><b>Doesn't have account? Register new user.</b></label>
-        <td><a href="registration">Register</a>
-    </div>
-
-    </body>
 </form>
+</body>
 
 </html>

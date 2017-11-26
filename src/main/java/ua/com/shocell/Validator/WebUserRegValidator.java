@@ -7,13 +7,13 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import ua.com.shocell.models.WebUsers;
-import ua.com.shocell.service.WebUsersService;
+import ua.com.shocell.service.WebUserServiceImpl;
 
 @Component
 public class WebUserRegValidator implements Validator {
 
     @Autowired
-    WebUsersService webUsersService;
+    WebUserServiceImpl webUserServiceImpl;
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -28,7 +28,7 @@ public class WebUserRegValidator implements Validator {
         if (regUsers.getLogin().length() < 3 || regUsers.getLogin().length() > 32) {
             errors.rejectValue("login", "Size.userForm.login");
         }
-        if (webUsersService.findByLogin(regUsers.getLogin()) != null) {
+        if (webUserServiceImpl.findWebUserByLogin(regUsers.getLogin()) != null) {
             errors.rejectValue("login", "Duplicate.userForm.login");
         }
 

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Component
 @Entity
@@ -14,12 +15,8 @@ import java.util.List;
 )
 public class WebUsers {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.AUTO
-    )
-    @Column(
-            name = "User_ID"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "User_ID")
     private int userID;
     @Column(
             name = "Login",
@@ -38,10 +35,15 @@ public class WebUsers {
     )
     private String email;
     @Column(
-            name = "WebUser_Role",
+            name = "Enabled",
             nullable = false
     )
-    private String webUserRole;
+    private boolean enabled;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
     @OneToMany(
             mappedBy = "webUserID",
             fetch = FetchType.LAZY,
@@ -57,16 +59,11 @@ public class WebUsers {
         this.login = login;
         this.password = password;
         this.email = email;
-        this.webUserRole = userRole;
     }
 
     public int getUserID() {
         return this.userID;
     }
-
-//    public void setUserID(int userID) {
-//        this.userID = userID;
-//    }
 
     public String getLogin() {
         return this.login;
@@ -82,14 +79,6 @@ public class WebUsers {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String webUserRole() {
-        return this.webUserRole;
-    }
-
-    public void setWebUserRole(String userRole) {
-        this.webUserRole = userRole;
     }
 
     public List<Abonents> getOwners() {
@@ -108,6 +97,22 @@ public class WebUsers {
         this.email = email;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "WebUsers{" +
@@ -115,7 +120,9 @@ public class WebUsers {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", webUserRole='" + webUserRole + '\'' +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                ", owners=" + owners +
                 '}';
     }
 }

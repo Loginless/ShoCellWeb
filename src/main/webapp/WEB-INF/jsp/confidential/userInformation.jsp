@@ -11,11 +11,11 @@
 <body>
 <form:form action="/login" method="get">
 
-login:${registerForm.login}
+login:${userInfForm.login}
 <br>
-password:${registerForm.password}
+password:${userInfForm.password}
 <br>
-email:${registerForm.email}
+email:${userInfForm.email}
 <br>
 <hr>
 <footer>
