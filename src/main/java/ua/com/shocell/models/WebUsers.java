@@ -1,5 +1,6 @@
 package ua.com.shocell.models;
 
+import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -40,7 +41,7 @@ public class WebUsers {
     )
     private boolean enabled;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 

@@ -1,87 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
-<style>
-    /* Full-width input fields */
-    input[type=text], input[type=password] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
-
-    /* Set a style for all buttons */
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-    }
-
-    /* Extra styles for the cancel button */
-    .cancelbtn {
-        padding: 14px 20px;
-        background-color: #f44336;
-    }
-
-    /* Float cancel and signup buttons and add an equal width */
-    .cancelbtn,.signupbtn {
-        float: left;
-        width: 50%;
-    }
-
-    /* Add padding to container elements */
-    .container {
-        padding: 16px;
-    }
-
-    /* Clear floats */
-    .clearfix::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
-
-    /* Change styles for cancel button and signup button on extra small screens */
-    @media screen and (max-width: 300px) {
-        .cancelbtn, .signupbtn {
-            width: 100%;
-        }
-    }
-</style>
+<head>
+    <title>Spring MVC Form Handling</title>
+</head>
 <body>
+<h1>Welcome to ShoCell!</h1>
 
-<h1>Create new user</h1><br>
-
-<form id="registerForm" commandName="registerForm" method="post"
-      action="${pageContext.request.contextPath}/registerProcess">
-
-    <div class="container">
-
-
-        <label><b>Login</b></label>
-        <input type="text" placeholder="Enter new Login" name="login" required>
-
-        <label><b>Password</b></label>
-        <input type="text" placeholder="Enter Password" name="password" required>
-
-        <label><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="email" required>
-        <div class="clearfix">
-            <%--<input type="submit" value="Register new user" name="Register">--%>
-            <button type="submit" class="signupbtn">Register new user</button>
-        </div>
-    </div>
-
-</form>
+<h2>Please, register new user.</h2>
+<form:form method="POST" action="/registerProcess">
+    <table>
+        <tr>
+            <td><form:label path="login">Login</form:label></td>
+            <td><form:input path="login" /></td>
+        </tr>
+        <tr>
+            <td><form:label path="password">Password</form:label></td>
+            <td><form:input path="password" /></td>
+        </tr>
+        <tr>
+            <td><form:label path="email">Email</form:label></td>
+            <td><form:input path="email" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Submit"/>
+            </td>
+        </tr>
+    </table>
+</form:form>
 </body>
-
 </html>

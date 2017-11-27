@@ -55,10 +55,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/confidential/**").hasAuthority("USER")
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .anyRequest()
-                .authenticated().and().csrf().disable().formLogin()
-                .loginPage("/login").failureUrl("/login?error=true")
-                .usernameParameter("login")
-                .passwordParameter("password");
+                .authenticated().and().csrf().disable().formLogin();
+
     }
 
     //    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

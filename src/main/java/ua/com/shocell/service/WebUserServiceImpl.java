@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.com.shocell.models.Role;
 import ua.com.shocell.models.WebUsers;
 import ua.com.shocell.repository.RoleRepository;
@@ -28,6 +29,7 @@ public class WebUserServiceImpl implements WebUserService, UserDetailsService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Override
     public WebUsers findWebUserByLogin(String login) {
         return webUsersJPARepository.findByLogin(login);
     }
@@ -42,6 +44,13 @@ public class WebUserServiceImpl implements WebUserService, UserDetailsService {
     }
 
     @Override
+    public boolean deleteByLogin(String login) {
+        webUsersJPARepository.deleteByLogin(login);
+        return true;
+    }
+
+    @Override
+    @Transactional
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         WebUsers webUsers = webUsersJPARepository.findByLogin(login);
         List<GrantedAuthority> authorities = getUserAuthority(webUsers.getRoles());
@@ -63,11 +72,4 @@ public class WebUserServiceImpl implements WebUserService, UserDetailsService {
     }
 
 
-
-        @Override
-        public boolean deleteByLogin (String login){
-            webUsersJPARepository.deleteByLogin(login);
-            return true;
-        }
-
-    }
+}
