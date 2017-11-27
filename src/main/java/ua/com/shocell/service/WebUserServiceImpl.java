@@ -38,7 +38,7 @@ public class WebUserServiceImpl implements WebUserService, UserDetailsService {
     public void saveUser(WebUsers webUsers) {
         webUsers.setPassword(bCryptPasswordEncoder.encode(webUsers.getPassword()));
         webUsers.setEnabled(true);
-        Role userRole = roleRepository.findByRole("USER");
+        Role userRole = roleRepository.findByRole("ADMIN");
         webUsers.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         webUsersJPARepository.save(webUsers);
     }
