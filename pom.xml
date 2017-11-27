@@ -23,23 +23,6 @@
         </dependency>
         <!-- END driver for connection to MYSql database -->
 
-        <!-- Hibernate dependancies -->
-        <!--<dependency>-->
-            <!--<groupId>org.hibernate</groupId>-->
-            <!--<artifactId>hibernate-core</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.hibernate</groupId>-->
-            <!--<artifactId>hibernate-entitymanager</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.hibernate</groupId>-->
-            <!--<artifactId>hibernate-jpamodelgen</artifactId>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-        <!-- End Hibernate -->
 
         <!-- Caching -->
         <!--<dependency>-->
@@ -71,16 +54,6 @@
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-messaging</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-websocket</artifactId>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -90,16 +63,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>org.apache.tomcat.embed</groupId>-->
-            <!--<artifactId>tomcat-embed-jasper</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -131,16 +94,32 @@
 
         <!-- End Spring Security-->
 
-
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-        <!--</dependency>-->
-
         <!-- End Spring-->
 
         <!-- optional -->
+
+        <!-- JSON -->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
+
         <!-- Connections pool-->
         <!--<dependency>-->
             <!--<groupId>org.hibernate</groupId>-->
