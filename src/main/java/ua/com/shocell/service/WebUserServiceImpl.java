@@ -62,7 +62,6 @@ public class WebUserServiceImpl implements WebUserService, UserDetailsService {
         for (Role role : userRoles) {
             roles.add(new SimpleGrantedAuthority(role.getRole()));
         }
-
         List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>(roles);
         return grantedAuthorities;
     }

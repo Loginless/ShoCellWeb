@@ -1,13 +1,9 @@
 package ua.com.shocell.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,8 +41,8 @@ public class MainController {
         WebUsers userExists = webUserService.findWebUserByLogin(user.getLogin());
         if (userExists != null) {
             bindingResult
-                    .rejectValue("email", "error.user",
-                            "There is already a user registered with the email provided");
+                    .rejectValue("login", "error.user",
+                            "There is already a user registered with the login provided");
         }
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
